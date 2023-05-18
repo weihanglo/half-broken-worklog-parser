@@ -111,7 +111,7 @@ fn error_lnr(lnr: usize, err: impl fmt::Display) -> Box<Error> {
 
 fn parse_item(date: &str, kind: Kind, text: &str) -> BoxResult<Record> {
     let (action, url) = match text
-        .trim_start_matches(&['-', ' '])
+        .trim_start_matches(&['-', ' ', '*'])
         .trim()
         .split_once(' ') {
             Some(s) => s,
@@ -159,7 +159,7 @@ fn main() -> BoxResult<()> {
                 date = text.trim().to_string();
                 continue;
             }
-            ("- ", text) => {
+            ("- " | "* ", text) => {
                 kind = text.trim().parse().map_err(|e| error_lnr(lnr, e))?;
                 continue;
             }
