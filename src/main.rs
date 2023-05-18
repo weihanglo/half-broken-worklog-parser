@@ -47,6 +47,7 @@ enum Action {
     Merged,
     Tracked,
     Updated,
+    Mentored,
 }
 
 impl FromStr for Action {
@@ -60,6 +61,7 @@ impl FromStr for Action {
             "Merged" => Action::Merged,
             "Tracked" => Action::Tracked,
             "Updated" => Action::Updated,
+            "Mentored" => Action::Mentored,
             _ => return Err(format!("Unrecognizable action `{s}`")),
         };
         Ok(action)
