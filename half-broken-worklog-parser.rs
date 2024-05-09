@@ -1,3 +1,9 @@
+#!/usr/bin/env -S cargo +nightly -Zscript
+---cargo
+[dependencies]
+# such empty
+---
+
 use std::fmt::Display;
 use std::fs::File;
 use std::io::{BufReader, BufRead, Write};
@@ -136,7 +142,7 @@ fn main() -> BoxResult<()> {
     let (in_path, out_path) = match args.as_slice() {
         [input, output] => (input, output),
         _ => {
-            eprintln!("Usage: parge-log <input> <output>");
+            eprintln!("Usage: half-broken-worklog-parser <input> <output>");
             process::exit(1);
         }
     };
